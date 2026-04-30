@@ -21,7 +21,13 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/*
 
 # ---------------------------------------------------------------------------
-# 2. Extension:AWS for R2/S3 file uploads
+# 2. Composer (binary copied from the official composer image — the
+#    mediawiki runtime image does not ship one).
+# ---------------------------------------------------------------------------
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+
+# ---------------------------------------------------------------------------
+# 3. Extension:AWS for R2/S3 file uploads
 #    Clones the extension, registers it with composer-merge-plugin, then
 #    runs composer to pull aws-sdk-php into core's vendor/.
 # ---------------------------------------------------------------------------
@@ -33,7 +39,7 @@ RUN set -eux; \
     cd /var/www/html && composer update --no-dev --no-interaction --prefer-dist
 
 # ---------------------------------------------------------------------------
-# 3. pl-extras.php — pulled in by LocalSettings.php (Steven adds one
+# 4. pl-extras.php — pulled in by LocalSettings.php (Steven adds one
 #    require_once line after the install wizard). Owns DB + R2 wiring so
 #    secrets stay in Render env vars, not in the public repo.
 # ---------------------------------------------------------------------------
