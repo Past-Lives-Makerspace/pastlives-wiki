@@ -1,0 +1,5 @@
+LocalSettings.php
+*.log
+.env
+.env.*
+!.env.example
