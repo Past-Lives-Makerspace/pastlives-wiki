@@ -150,7 +150,7 @@ wfLoadExtension( 'WikiEditor' );
 # Add more configuration options below.
 require_once __DIR__ . '/pl-extras.php';
 # Anonymous users can do nothing
-$wgGroupPermissions['*']['read'] = false;
+$wgGroupPermissions['*']['read'] = true;
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['*']['createpage'] = false;
 $wgGroupPermissions['*']['createaccount'] = false;
