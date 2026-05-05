@@ -45,3 +45,8 @@ RUN set -eux; \
 # ---------------------------------------------------------------------------
 COPY pl-extras.php /var/www/html/pl-extras.php
 COPY LocalSettings.php /var/www/html/LocalSettings.php
+# ---------------------------------------------------------------------------
+# 5. NamespaceLockdown extension for namespace permissions
+# ---------------------------------------------------------------------------
+RUN git clone --depth 1 https://github.com/wikimedia/mediawiki-extensions-NamespaceLockdown.git \
+    /var/www/html/extensions/NamespaceLockdown
