@@ -281,4 +281,3 @@ $wgGroupPermissions['visual-admin']['read'] = true;
 $wgGroupPermissions['visual-admin']['edit'] = true;
 $wgGroupPermissions['darkroom-admin']['read'] = true;
 $wgGroupPermissions['darkroom-admin']['edit'] = true;
-
