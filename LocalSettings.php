@@ -281,3 +281,9 @@ $wgGroupPermissions['visual-admin']['read'] = true;
 $wgGroupPermissions['visual-admin']['edit'] = true;
 $wgGroupPermissions['darkroom-admin']['read'] = true;
 $wgGroupPermissions['darkroom-admin']['edit'] = true;
+
+# ---------------------------------------------------------------------------
+# 5. NamespaceLockdown extension for namespace permissions
+# ---------------------------------------------------------------------------
+RUN git clone --depth 1 https://github.com/wikimedia/mediawiki-extensions-NamespaceLockdown.git \
+    /var/www/html/extensions/NamespaceLockdown
