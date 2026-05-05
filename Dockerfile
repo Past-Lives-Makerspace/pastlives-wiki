@@ -44,3 +44,4 @@ RUN set -eux; \
 #    secrets stay in Render env vars, not in the public repo.
 # ---------------------------------------------------------------------------
 COPY pl-extras.php /var/www/html/pl-extras.php
+COPY LocalSettings.php /var/www/html/LocalSettings.php
