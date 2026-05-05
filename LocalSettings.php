@@ -149,3 +149,135 @@ wfLoadExtension( 'WikiEditor' );
 # End of automatically generated settings.
 # Add more configuration options below.
 require_once __DIR__ . '/pl-extras.php';
+# Anonymous users can do nothing
+$wgGroupPermissions['*']['read'] = false;
+$wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['*']['createpage'] = false;
+$wgGroupPermissions['*']['createaccount'] = false;
+
+# All logged-in users can read everything
+$wgGroupPermissions['user']['read'] = true;
+$wgGroupPermissions['user']['edit'] = false;
+$wgGroupPermissions['user']['createpage'] = false;
+
+# Load namespace lockdown extension
+wfLoadExtension('NamespaceLockdown');
+
+# Custom namespaces
+define('NS_CERAMICS', 3000);
+define('NS_CERAMICS_TALK', 3001);
+define('NS_EVENTS', 3002);
+define('NS_EVENTS_TALK', 3003);
+define('NS_GALLERY', 3004);
+define('NS_GALLERY_TALK', 3005);
+define('NS_GARDENERS', 3006);
+define('NS_GARDENERS_TALK', 3007);
+define('NS_JEWELERS', 3008);
+define('NS_JEWELERS_TALK', 3009);
+define('NS_METALWORKERS', 3010);
+define('NS_METALWORKERS_TALK', 3011);
+define('NS_GLASS', 3012);
+define('NS_GLASS_TALK', 3013);
+define('NS_TECH', 3014);
+define('NS_TECH_TALK', 3015);
+define('NS_WOODWORKERS', 3016);
+define('NS_WOODWORKERS_TALK', 3017);
+define('NS_WRITERS', 3018);
+define('NS_WRITERS_TALK', 3019);
+define('NS_ART', 3020);
+define('NS_ART_TALK', 3021);
+define('NS_PRISON', 3022);
+define('NS_PRISON_TALK', 3023);
+define('NS_FOOD', 3024);
+define('NS_FOOD_TALK', 3025);
+define('NS_LEATHER', 3026);
+define('NS_LEATHER_TALK', 3027);
+define('NS_VISUAL', 3028);
+define('NS_VISUAL_TALK', 3029);
+define('NS_DARKROOM', 3030);
+define('NS_DARKROOM_TALK', 3031);
+
+$wgExtraNamespaces[NS_CERAMICS] = 'Ceramics';
+$wgExtraNamespaces[NS_CERAMICS_TALK] = 'Ceramics_talk';
+$wgExtraNamespaces[NS_EVENTS] = 'Events';
+$wgExtraNamespaces[NS_EVENTS_TALK] = 'Events_talk';
+$wgExtraNamespaces[NS_GALLERY] = 'Gallery';
+$wgExtraNamespaces[NS_GALLERY_TALK] = 'Gallery_talk';
+$wgExtraNamespaces[NS_GARDENERS] = 'Gardeners';
+$wgExtraNamespaces[NS_GARDENERS_TALK] = 'Gardeners_talk';
+$wgExtraNamespaces[NS_JEWELERS] = 'Jewelers';
+$wgExtraNamespaces[NS_JEWELERS_TALK] = 'Jewelers_talk';
+$wgExtraNamespaces[NS_METALWORKERS] = 'Metalworkers';
+$wgExtraNamespaces[NS_METALWORKERS_TALK] = 'Metalworkers_talk';
+$wgExtraNamespaces[NS_GLASS] = 'Glass';
+$wgExtraNamespaces[NS_GLASS_TALK] = 'Glass_talk';
+$wgExtraNamespaces[NS_TECH] = 'Tech';
+$wgExtraNamespaces[NS_TECH_TALK] = 'Tech_talk';
+$wgExtraNamespaces[NS_WOODWORKERS] = 'Woodworkers';
+$wgExtraNamespaces[NS_WOODWORKERS_TALK] = 'Woodworkers_talk';
+$wgExtraNamespaces[NS_WRITERS] = 'Writers';
+$wgExtraNamespaces[NS_WRITERS_TALK] = 'Writers_talk';
+$wgExtraNamespaces[NS_ART] = 'Art';
+$wgExtraNamespaces[NS_ART_TALK] = 'Art_talk';
+$wgExtraNamespaces[NS_PRISON] = 'Prison';
+$wgExtraNamespaces[NS_PRISON_TALK] = 'Prison_talk';
+$wgExtraNamespaces[NS_FOOD] = 'Food';
+$wgExtraNamespaces[NS_FOOD_TALK] = 'Food_talk';
+$wgExtraNamespaces[NS_LEATHER] = 'Leather';
+$wgExtraNamespaces[NS_LEATHER_TALK] = 'Leather_talk';
+$wgExtraNamespaces[NS_VISUAL] = 'Visual';
+$wgExtraNamespaces[NS_VISUAL_TALK] = 'Visual_talk';
+$wgExtraNamespaces[NS_DARKROOM] = 'Darkroom';
+$wgExtraNamespaces[NS_DARKROOM_TALK] = 'Darkroom_talk';
+
+# Only namespace admins can edit their namespace
+$wgNamespacePermissionLockdown[NS_CERAMICS]['edit'] = ['sysop', 'ceramics-admin'];
+$wgNamespacePermissionLockdown[NS_EVENTS]['edit'] = ['sysop', 'events-admin'];
+$wgNamespacePermissionLockdown[NS_GALLERY]['edit'] = ['sysop', 'gallery-admin'];
+$wgNamespacePermissionLockdown[NS_GARDENERS]['edit'] = ['sysop', 'gardeners-admin'];
+$wgNamespacePermissionLockdown[NS_JEWELERS]['edit'] = ['sysop', 'jewelers-admin'];
+$wgNamespacePermissionLockdown[NS_METALWORKERS]['edit'] = ['sysop', 'metalworkers-admin'];
+$wgNamespacePermissionLockdown[NS_GLASS]['edit'] = ['sysop', 'glass-admin'];
+$wgNamespacePermissionLockdown[NS_TECH]['edit'] = ['sysop', 'tech-admin'];
+$wgNamespacePermissionLockdown[NS_WOODWORKERS]['edit'] = ['sysop', 'woodworkers-admin'];
+$wgNamespacePermissionLockdown[NS_WRITERS]['edit'] = ['sysop', 'writers-admin'];
+$wgNamespacePermissionLockdown[NS_ART]['edit'] = ['sysop', 'art-admin'];
+$wgNamespacePermissionLockdown[NS_PRISON]['edit'] = ['sysop', 'prison-admin'];
+$wgNamespacePermissionLockdown[NS_FOOD]['edit'] = ['sysop', 'food-admin'];
+$wgNamespacePermissionLockdown[NS_LEATHER]['edit'] = ['sysop', 'leather-admin'];
+$wgNamespacePermissionLockdown[NS_VISUAL]['edit'] = ['sysop', 'visual-admin'];
+$wgNamespacePermissionLockdown[NS_DARKROOM]['edit'] = ['sysop', 'darkroom-admin'];
+
+# Namespace admin group permissions
+$wgGroupPermissions['ceramics-admin']['read'] = true;
+$wgGroupPermissions['ceramics-admin']['edit'] = true;
+$wgGroupPermissions['events-admin']['read'] = true;
+$wgGroupPermissions['events-admin']['edit'] = true;
+$wgGroupPermissions['gallery-admin']['read'] = true;
+$wgGroupPermissions['gallery-admin']['edit'] = true;
+$wgGroupPermissions['gardeners-admin']['read'] = true;
+$wgGroupPermissions['gardeners-admin']['edit'] = true;
+$wgGroupPermissions['jewelers-admin']['read'] = true;
+$wgGroupPermissions['jewelers-admin']['edit'] = true;
+$wgGroupPermissions['metalworkers-admin']['read'] = true;
+$wgGroupPermissions['metalworkers-admin']['edit'] = true;
+$wgGroupPermissions['glass-admin']['read'] = true;
+$wgGroupPermissions['glass-admin']['edit'] = true;
+$wgGroupPermissions['tech-admin']['read'] = true;
+$wgGroupPermissions['tech-admin']['edit'] = true;
+$wgGroupPermissions['woodworkers-admin']['read'] = true;
+$wgGroupPermissions['woodworkers-admin']['edit'] = true;
+$wgGroupPermissions['writers-admin']['read'] = true;
+$wgGroupPermissions['writers-admin']['edit'] = true;
+$wgGroupPermissions['art-admin']['read'] = true;
+$wgGroupPermissions['art-admin']['edit'] = true;
+$wgGroupPermissions['prison-admin']['read'] = true;
+$wgGroupPermissions['prison-admin']['edit'] = true;
+$wgGroupPermissions['food-admin']['read'] = true;
+$wgGroupPermissions['food-admin']['edit'] = true;
+$wgGroupPermissions['leather-admin']['read'] = true;
+$wgGroupPermissions['leather-admin']['edit'] = true;
+$wgGroupPermissions['visual-admin']['read'] = true;
+$wgGroupPermissions['visual-admin']['edit'] = true;
+$wgGroupPermissions['darkroom-admin']['read'] = true;
+$wgGroupPermissions['darkroom-admin']['edit'] = true;
