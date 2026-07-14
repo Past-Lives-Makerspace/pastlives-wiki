@@ -50,3 +50,9 @@ COPY LocalSettings.php /var/www/html/LocalSettings.php
 # ---------------------------------------------------------------------------
 RUN git clone --depth 1 https://github.com/wikimedia/mediawiki-extensions-NamespaceLockdown.git \
      /var/www/html/extensions/NamespaceLockdown
+# ---------------------------------------------------------------------------
+# 6. QR Code Plugin
+# ---------------------------------------------------------------------------
+RUN git clone https://github.com/Past-Lives-Makerspace/MediaWikiQrPlugin.git /var/www/html/extensions/MediaWikiQrPlugin \
+    && cd /var/www/html/extensions/MediaWikiQrPlugin \
+    && composer
