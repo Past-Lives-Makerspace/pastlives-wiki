@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mediawiki
+      POSTGRES_USER: mediawiki_user
+      POSTGRES_PASSWORD: localdevpassword
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mediawiki_user -d mediawiki"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  wiki:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      # -- Database (consumed by pl-extras.php) --
+      MW_DB_TYPE: postgres
+      MW_DB_SERVER: db
+      MW_DB_NAME: mediawiki
+      MW_DB_USER: mediawiki_user
+      MW_DB_PASS: localdevpassword
+      MW_DB_SSL: "false"
+
+      # -- R2 / file uploads (set real values in .env or leave as stubs) --
+      MW_R2_ACCESS_KEY_ID: changeme
+      MW_R2_SECRET_ACCESS_KEY: changeme
+      MW_R2_ACCOUNT_ID: changeme
+      MW_R2_BUCKET: changeme
+      MW_R2_PATH_PREFIX: /mediawiki
+      MW_R2_PUBLIC_HOST: changeme
+
+      # -- Local dev overrides (not used in production) --
+      MW_SERVER: "http://localhost:8080"
+      MW_CACHE_TYPE: CACHE_NONE
+
+    volumes:
+      - images:/var/www/html/images
+
+volumes:
+  db-data:
+  images:

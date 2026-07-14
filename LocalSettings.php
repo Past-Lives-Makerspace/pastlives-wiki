@@ -138,6 +138,7 @@ wfLoadSkin( 'Vector' );
 # to LocalSettings.php. Check specific extension documentation for more details.
 # The following extensions were automatically enabled:
 wfLoadExtension( 'CodeEditor' );
+wfLoadExtension( 'Lockdown' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'PdfHandler' );
 wfLoadExtension( 'ReplaceText' );
@@ -160,9 +161,6 @@ $wgGroupPermissions['*']['createaccount'] = false;
 $wgGroupPermissions['user']['read'] = true;
 $wgGroupPermissions['user']['edit'] = false;
 $wgGroupPermissions['user']['createpage'] = false;
-
-# Load namespace lockdown extension
-wfLoadExtension('NamespaceLockdown');
 
 # Custom namespaces
 define('NS_CERAMICS', 3000);
@@ -282,3 +280,8 @@ $wgGroupPermissions['visual-admin']['read'] = true;
 $wgGroupPermissions['visual-admin']['edit'] = true;
 $wgGroupPermissions['darkroom-admin']['read'] = true;
 $wgGroupPermissions['darkroom-admin']['edit'] = true;
+
+# Development
+# Show detailed errors. DO NOT ENABLE THIS IN PRODUCTION.
+#$wgShowExceptionDetails = true;
+

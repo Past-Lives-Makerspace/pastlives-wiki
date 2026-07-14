@@ -79,16 +79,26 @@ R2 (already set):
 
 ## Local development
 
+To simply build the Docker image:
+
 ```sh
-docker build -t pastlives-wiki .
-docker run --rm -p 8080:80 \
-  -e MW_DB_TYPE=postgres \
-  -e MW_DB_SERVER=... \
-  ... (other env vars)
-  pastlives-wiki
+make build
+```
+
+To run in a test environment:
+
+```sh
+make build
+make up
+make update-db
 ```
 
 Open `http://localhost:8080`.
+
+Log in as admin/adminpassword
+
+- TODO:
+    - [ ] Import content into dev environment (either actual production content or a bunch of placeholders?)
 
 ## Deploying
 

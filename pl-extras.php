@@ -18,6 +18,7 @@ $wgDBserver   = $_ENV['MW_DB_SERVER'];
 $wgDBname     = $_ENV['MW_DB_NAME'];
 $wgDBuser     = $_ENV['MW_DB_USER'];
 $wgDBpassword = $_ENV['MW_DB_PASS'];
+$wgDBssl      = filter_var( $_ENV['MW_DB_SSL'] ?? 'true', FILTER_VALIDATE_BOOLEAN );
 
 // ---- File uploads via Cloudflare R2 (Extension:AWS) ------------------------
 wfLoadExtension( 'AWS' );
@@ -59,3 +60,14 @@ $wgAWSBucketDomain = $_ENV['MW_R2_PUBLIC_HOST'];
 // rejects. The two putenv() lines are the documented R2 workaround.
 putenv( 'AWS_REQUEST_CHECKSUM_CALCULATION=WHEN_REQUIRED' );
 putenv( 'AWS_RESPONSE_CHECKSUM_VALIDATION=WHEN_REQUIRED' );
+
+// ---- Local development overrides ------------------------------------------
+// MW_SERVER and MW_CACHE_TYPE are only set in docker-compose; in production
+// these env vars are absent and the LocalSettings.php defaults are used.
+if ( !empty( $_ENV['MW_SERVER'] ) ) {
+    $wgServer = $_ENV['MW_SERVER'];
+}
+
+if ( !empty( $_ENV['MW_CACHE_TYPE'] ) ) {
+    $wgMainCacheType = constant( $_ENV['MW_CACHE_TYPE'] );
+}
