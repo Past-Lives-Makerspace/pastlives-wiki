@@ -1,0 +1,15 @@
+# Composer-installed third-party dependencies — restore with `composer install`.
+/vendor/
+
+# Composer's own artifacts
+composer.phar
+
+# Editor / IDE files
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS cruft
+.DS_Store
+Thumbs.db
