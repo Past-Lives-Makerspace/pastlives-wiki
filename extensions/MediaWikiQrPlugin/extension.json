@@ -1,0 +1,28 @@
+{
+	"name": "MediaWikiQrPlugin",
+	"version": "0.1.0",
+	"author": ["Brian"],
+	"url": "https://www.mediawiki.org/wiki/Extension:MediaWikiQrPlugin",
+	"descriptionmsg": "mediawikiqrplugin-desc",
+	"license-name": "MIT",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.43.0"
+	},
+	"AutoloadClasses": {
+		"MediaWikiQrPlugin\\Hooks": "src/Hooks.php"
+	},
+	"Hooks": {
+		"SkinAfterContent": "MediaWikiQrPlugin\\Hooks::onSkinAfterContent"
+	},
+	"ResourceModules": {
+		"ext.mediaWikiQrPlugin": {
+			"localBasePath": "resources",
+			"remoteExtPath": "MediaWikiQrPlugin/resources",
+			"scripts": [
+				"ext.mediaWikiQrPlugin.js"
+			]
+		}
+	},
+	"manifest_version": 2
+}

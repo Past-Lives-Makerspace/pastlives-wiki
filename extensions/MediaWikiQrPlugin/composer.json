@@ -1,0 +1,13 @@
+{
+	"name": "mediawiki/mediawikiqrplugin",
+	"description": "MediaWiki extension that renders a QR code linking to the current page",
+	"type": "mediawiki-extension",
+	"license": "MIT",
+	"require": {
+		"php": "^8.2",
+		"chillerlan/php-qrcode": "6.0.1"
+	},
+	"config": {
+		"vendor-dir": "vendor"
+	}
+}
