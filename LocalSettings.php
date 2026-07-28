@@ -213,6 +213,30 @@ $wgJobRunRate = 0.01;
  $wgExtraNamespaces[NS_DARKROOM_AND_PHOTOGRAPHY] = 'Darkroom_and_photography';
 
 # ============================================================
+# Allow [subpages](https://www.mediawiki.org/wiki/Help:Subpages) on main, 
+# user, and our custom namespaces.
+# ============================================================
+ $wgNamespacesWithSubpages = array(
+    NS_MAIN => true,
+    NS_USER => true,
+    NS_CERAMICS => true,
+    NS_EVENTS => true,
+    NS_GARDENERS => true,
+    NS_JEWELERS => true,
+    NS_METALWORKERS => true,
+    NS_GLASS => true,
+    NS_TECH => true,
+    NS_TEXTILES => true,
+    NS_WOODWORKERS => true,
+    NS_WRITERS => true,
+    NS_ART_FRAMING => true,
+    NS_PRISON_OUTREACH => true,
+    NS_FOOD_INDEPENDENCE => true,
+    NS_VISUAL_ARTS => true,
+    NS_DARKROOM_AND_PHOTOGRAPHY => true
+ );
+
+# ============================================================
 # Namespace Permissions
 # Everyone can read. Only specific editor groups can edit.
 # ============================================================
