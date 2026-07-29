@@ -1,0 +1,20 @@
+name: Deploy to Hetzner
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        env:
+          SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "5.78.148.196 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMQ03qxd3xPLUb8s/RZ5sFqiKTptwKJaOI2wXsLvztjX" >> ~/.ssh/known_hosts
+          echo "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh -i ~/.ssh/deploy_key root@5.78.148.196 'bash /var/www/wiki.pastlives.space/public/deploy.sh'
